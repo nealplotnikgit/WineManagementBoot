@@ -18,7 +18,7 @@ import com.plotnik.winecellar.management.model.Order;
 import com.plotnik.winecellar.management.model.Wine;
 @RestController
 //@Path("/order")
-public class WineOrderService {
+public class WineOrderController {
 	@RequestMapping(value="/order", 
             method=RequestMethod.POST, 
             produces=MediaType.APPLICATION_JSON_VALUE,

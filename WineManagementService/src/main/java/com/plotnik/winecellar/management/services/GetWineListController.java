@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.plotnik.winecellar.management.model.Wine;
 @RestController
 //@Path("/search")
-public class GetWineListService {
+public class GetWineListController {
 
 	@RequestMapping(value="/search", 
             method=RequestMethod.GET, 
