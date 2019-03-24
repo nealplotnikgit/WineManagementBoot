@@ -22,7 +22,7 @@ import com.plotnik.winecellar.management.model.Wine;
 public class GetWineDetailController {
 
 @Autowired
-	private GetWineDetailService service;
+	private WineService service;
 	
 @RequestMapping(value="/UPC", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
     public Wine getWineDetail(@RequestParam(value="id")String id) throws Exception{
@@ -37,11 +37,11 @@ public class GetWineDetailController {
 		}
     }
 
-private GetWineDetailService getService() {
+private WineService getService() {
 	return service;
 }
 
-private void setService(GetWineDetailService service) {
+private void setService(WineService service) {
 	this.service = service;
 }
 

@@ -2,11 +2,15 @@ package com.plotnik.winecellar.management.services;
 
 //http://localhost:8080/search?--parameters
 import java.time.LocalDate;
+import java.time.Year;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.ws.Response;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 //import javax.ws.rs.core.Response;
 
@@ -21,6 +25,9 @@ import com.plotnik.winecellar.management.model.Wine;
 @RestController
 //@Path("/search")
 public class GetWineListController {
+	
+	@Autowired
+	WineService service;
 
 	@RequestMapping(value="/search", 
             method=RequestMethod.GET, 
@@ -31,21 +38,36 @@ public class GetWineListController {
     		@RequestParam(value="name",required=false) String name,
     		@RequestParam(value="year",required=false) String year,
     		@RequestParam(value="category",required=false) String category) throws Exception{
-        ArrayList<Wine> wineList = new ArrayList<Wine>();
-        if ((id == null) && (name == null) && (year == null) && (category == null)) {
-        	throw new Exception("The search criteria is invalid");
+		if ((id == null) && (name == null) && (year == null) && (category == null)) {
+        	throw new WineException("The search criteria is invalid");
         }
-        Wine wine = new Wine(Integer.parseInt(id));
-        wine.setCost(100.00f);
-        wine.setPrice(110.00f);
-        wine.setName(name);
-        wine.setVintner("Apache");
-        wine.setVintageYear(year);
-        wine.setCategory(category);
-        wineList.add(wine);
-        return wineList;
+        SearchCriteria searchCriteria = new SearchCriteria();
+        ArrayList<Wine> result = null;
+        searchCriteria.setId(id);
+        searchCriteria.setName(name);
+        if (year != null) { 
+        	try {
+        		searchCriteria.setYear(Year.parse(year));
+        		if (searchCriteria.getYear().isAfter(Year.now())) {
+        			throw new WineException("Enter a year before current year");
+        		}
+        		
+        	} catch (DateTimeParseException d){
+        		throw new WineException("invalid year entered");
+        	}
+        }
+        searchCriteria.setCategory(category);
+		
+        try {
+        	result = service.getWineList(searchCriteria);
+		} catch (WineDataException wd) {
+			throw new WineException("data exception", wd);
+		}
+        return result;
 //        return Response.status(200).entity(output).build();
     }
+	
+	
 
 }
 
