@@ -15,7 +15,7 @@ import com.plotnik.winecellar.management.model.Wine;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class WineManagementApplicationTests {
+public class WineManagementApplicationTestsWithContext {
 
 	@Autowired
 	private ApplicationContext applicationContext;

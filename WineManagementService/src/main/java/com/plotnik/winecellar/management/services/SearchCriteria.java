@@ -6,7 +6,7 @@ public class SearchCriteria {
 	
    private String id = null;
    private String name = null;
-   private Year year = null;
+   private String year = null;
    private String category = null;
 
    public String getId() {
@@ -21,10 +21,10 @@ public class SearchCriteria {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Year getYear() {
+	public String getYear() {
 		return year;
 	}
-	public void setYear(Year year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	public String getCategory() {

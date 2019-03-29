@@ -47,10 +47,12 @@ public class GetWineListController {
         searchCriteria.setName(name);
         if (year != null) { 
         	try {
-        		searchCriteria.setYear(Year.parse(year));
-        		if (searchCriteria.getYear().isAfter(Year.now())) {
+        		Year y = Year.parse(year);
+            	if (y.isAfter(Year.now())) {
         			throw new WineException("Enter a year before current year");
         		}
+            	searchCriteria.setYear(year);
+        		
         		
         	} catch (DateTimeParseException d){
         		throw new WineException("invalid year entered");
