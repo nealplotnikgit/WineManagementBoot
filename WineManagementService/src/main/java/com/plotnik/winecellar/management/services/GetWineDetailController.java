@@ -1,6 +1,6 @@
 package com.plotnik.winecellar.management.services;
 
-//http://localhost:8080/UPC?id=xxxxxx
+//http://localhost:8080/detail?id=xxxxxx
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
@@ -24,7 +24,7 @@ public class GetWineDetailController {
 @Autowired
 	private WineService service;
 	
-@RequestMapping(value="/UPC", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value="/detail", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
     public Wine getWineDetail(@RequestParam(value="id")String id) throws Exception{
         if (id == null) {
         	throw new WineException("id is null");

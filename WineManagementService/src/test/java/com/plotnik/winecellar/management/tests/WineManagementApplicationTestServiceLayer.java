@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 @RunWith(SpringRunner.class)
 //@SpringBootTest  --> no context
-public class WineManagementApplicationTestsNoContext {
+public class WineManagementApplicationTestServiceLayer {
 	
 	@MockBean
 	private WineDao wineDao;
