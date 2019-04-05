@@ -26,8 +26,8 @@ public class GetWineDetailController {
 	
 @RequestMapping(value="/detail", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
     public Wine getWineDetail(@RequestParam(value="id")String id) throws Exception{
-        if (id == null) {
-        	throw new WineException("id is null");
+        if (id == "") {
+        	throw new WineException("id is empty");
         }
 		try{
 			Wine result = getService().getWineDetail(id);

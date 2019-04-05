@@ -48,7 +48,7 @@ public class WineManagementApplicationTestWebLayer {
 	@MockBean
 	private WineService wineService;
 	
-	Wine mockWine = new Wine(123);
+	Wine mockWine = new Wine(2, "Le Bongo", 110, 100, "2019", "Apache", "Red" );
 
 	String exampleCourseJson = "{\"name\":\"Spring\",\"description\":\"10 Steps\",\"steps\":[\"Learn Maven\",\"Import Project\",\"First Example\",\"Second Example\"]}";
 	
@@ -68,11 +68,29 @@ public class WineManagementApplicationTestWebLayer {
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		System.out.println(result.getResponse());
-		String expected = "{\"upc\":2,\"name\":\"Le Bongo-Incredible 2\",\"price\":110.0,\"cost\":100.0,\"vintageYear\":\"2019\",\"vintner\":\"Apache\",\"category\":\"Red\"}";
+		String expected = "{\"upc\":2,\"name\":\"Le Bongo\",\"price\":110.0,\"cost\":100.0,\"vintageYear\":\"2019\",\"vintner\":\"Apache\",\"category\":\"Red\"}";
 
 		// {"id":"Course1","name":"Spring","description":"10 Steps, 25 Examples and 10K Students","steps":["Learn Maven","Import Project","First Example","Second Example"]}
 
 		JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+					
+	}
+	@Test
+	public void testGetDetailNullId() throws Exception {
+		
+		Mockito.when(wineService.getWineDetail(Mockito.anyString())).thenReturn(mockWine);
+
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
+				"/detail").accept(MediaType.APPLICATION_JSON);
+
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+		System.out.println(result.getResponse());
+		String expected = "id is null";
+
+		// {"id":"Course1","name":"Spring","description":"10 Steps, 25 Examples and 10K Students","steps":["Learn Maven","Import Project","First Example","Second Example"]}
+		assertEquals(result.getResponse().getStatus(),404);
+		assertEquals("error message", expected, result.getResponse().getContentAsString());
 					
 	}
 	

@@ -25,6 +25,16 @@ public class Wine {
 		this.cost = cost;
 		
 	};
+	public Wine(int UPC, String name, float price, float cost, String year, String vintner, String category){
+		this(UPC);
+		this.price = price;
+		this.cost = cost;
+		this.name = name;
+		this.vintageYear = year;
+		this.vintner = vintner;
+		this.category = category;
+		
+	};
 	
 	public float getCost() {
 		return cost;
