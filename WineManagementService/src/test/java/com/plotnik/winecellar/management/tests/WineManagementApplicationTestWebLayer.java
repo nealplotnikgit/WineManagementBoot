@@ -30,7 +30,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.plotnik.winecellar.management.model.Wine;
 import com.plotnik.winecellar.management.services.GetWineDetailController;
 import com.plotnik.winecellar.management.services.SearchCriteria;
-import com.plotnik.winecellar.management.services.WineDao;
+import com.plotnik.winecellar.management.services.WineDaoImpl;
 import com.plotnik.winecellar.management.services.WineService;
 
 import static org.mockito.BDDMockito.given;

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Wine {
 
-	private int upc;  // 12 digit id
+	private long upc;  // 12 digit id
 	private String name;
 	private float price;
 	private float cost;
@@ -16,16 +16,16 @@ public class Wine {
 	public Wine(){
 	};
 	
-	public Wine(int UPC){
+	public Wine(long UPC){
 		this.upc = UPC;
 	};
-	public Wine(int UPC, float price, float cost){
+	public Wine(long UPC, float price, float cost){
 		this(UPC);
 		this.price = price;
 		this.cost = cost;
 		
 	};
-	public Wine(int UPC, String name, float price, float cost, String year, String vintner, String category){
+	public Wine(long UPC, String name, float price, float cost, String year, String vintner, String category){
 		this(UPC);
 		this.price = price;
 		this.cost = cost;
@@ -54,10 +54,10 @@ public class Wine {
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	public int getUpc() {
+	public long getUpc() {
 		return upc;
 	}
-	public void setUpc(int uPC) {
+	public void setUpc(long uPC) {
 		upc = uPC;
 	}
 	public String getVintageYear() {
