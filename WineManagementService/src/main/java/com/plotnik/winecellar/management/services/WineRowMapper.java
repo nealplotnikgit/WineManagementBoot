@@ -14,7 +14,12 @@ public class WineRowMapper implements RowMapper<Wine> {
 	public Wine mapRow(ResultSet rs,int row) throws SQLException {
 		Wine result = new Wine();
 		result.setUpc(rs.getBigDecimal("upc").longValue());
-		//TODO add other columns
+		result.setName(rs.getString("varietal"));
+		//result.setVintageYear(rs.getString("vintageYear"));
+		result.setVintner(rs.getString("vintner"));
+		result.setCategory(rs.getString("category"));
+		//result.setVintner(rs.getString("size"));
+			//TODO add other columns
 		return result;
 		
 

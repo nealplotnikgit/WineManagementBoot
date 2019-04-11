@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.plotnik.winecellar.management.model.Wine;
 import com.plotnik.winecellar.management.services.SearchCriteria;
 import com.plotnik.winecellar.management.services.WineDao;
+import com.plotnik.winecellar.management.services.WineDaoImpl;
 import com.plotnik.winecellar.management.services.WineService;
 
 import static org.mockito.BDDMockito.given;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 public class WineManagementApplicationTestServiceLayer {
 	
 	@MockBean
-	private WineDao wineDao;
+	private WineDaoImpl wineDao;
 	
 	private WineService wineService;
 	
@@ -44,7 +45,7 @@ public class WineManagementApplicationTestServiceLayer {
 	
 	@Test
 	public void testGetDetail() throws Exception {
-		given(this.wineDao.getWineDetail("123")).willReturn(new Wine(123));
+		given(this.wineDao.getWineDetail(123)).willReturn(new Wine(123));
 		
 		String id = "123";
 		Wine wine = wineService.getWineDetail(id);
@@ -75,7 +76,7 @@ public class WineManagementApplicationTestServiceLayer {
 	    wine.setCategory(s.getCategory());
 	    wineList.add(wine);
 	    
-		given(wineDao.getWineList(BDDMockito.any(SearchCriteria.class))).willReturn(wineList);
+		given(wineDao.getWineList(BDDMockito.any(long.class),BDDMockito.any(String.class),BDDMockito.any(String.class),BDDMockito.any(String.class))).willReturn(wineList);
 				
 		ArrayList<Wine> result = wineService.getWineList(s);
 		

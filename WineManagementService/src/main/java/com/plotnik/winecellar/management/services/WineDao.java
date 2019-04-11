@@ -6,8 +6,8 @@ import com.plotnik.winecellar.management.model.Wine;
 
 public interface WineDao {
 
-	Wine getWineDetail(String id) throws WineDataException;
-
-	ArrayList<Wine> getWineList(SearchCriteria searchCriteria) throws WineDataException;
+	ArrayList<Wine> getWineList(long upc, String category, String name, String year) throws WineDataException;
+	
+	Wine getWineDetail(long UPC) throws WineDataException;
 
 }

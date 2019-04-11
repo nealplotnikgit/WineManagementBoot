@@ -22,29 +22,14 @@ public WineDaoImpl(NamedParameterJdbcTemplate template) {
     this.template = template;  
 }  
 	
-	/* (non-Javadoc)
-	 * @see com.plotnik.winecellar.management.services.WineDao#getWineDetail(java.lang.String)
-	 */
-	@Override
-	public Wine getWineDetail(String id) throws WineDataException {
-		//TODO stub only
-		Wine wine = new Wine(Integer.parseInt(id));
-		wine.setCost(100.00f);
-		wine.setPrice(110.00f);
-		wine.setName("Le Bongo-Incredible 2");
-		wine.setVintner("Apache");
-		wine.setVintageYear(new Integer(LocalDate.now().getYear()).toString());
-		wine.setCategory("Red");
-		return wine;
-	}
-	
+
 	/* (non-Javadoc)
 	 * @see com.plotnik.winecellar.management.services.WineDao#getWineList(com.plotnik.winecellar.management.services.SearchCriteria)
 	 */
 	@Override
-	public ArrayList<Wine> getWineList(SearchCriteria searchCriteria) throws WineDataException {
+	public ArrayList<Wine> getWineList(long upc, String category, String name, String year) throws WineDataException {
 		//TODO need to fix to handle other criteria
-		String query = "select upc, varietal, vintner, category,size from prod.wine_master where upc = " + searchCriteria.getId();
+		String query = "select upc, varietal, vintner, category,size from prod.wine_master where upc = " + upc;
 		try { 
 			  List<Wine> l = template.query(query,new WineRowMapper());
 			  if (l.size() == 0) {
@@ -69,4 +54,34 @@ public WineDaoImpl(NamedParameterJdbcTemplate template) {
 	    return wineList;
 	    */
 	}
-}
+
+	@Override
+	public Wine getWineDetail(long UPC) throws WineDataException {
+		String query = "select upc, varietal, vintner, category,size from prod.wine_master where upc = " + UPC;
+		try { 
+			  
+			List<Wine> l = template.query(query,new WineRowMapper());
+			  if (l.size() == 0) {
+				  throw new WineDataException("no data"); //TODO Fix this!
+			  } else {//assume one row
+				  return l.get(0);
+			  }
+		} catch (DataAccessException d) {
+			throw new WineDataException("Data Exception finding Wine",d); //TODO add logging somewhere
+		} catch (Exception e) {
+			throw new WineDataException("Exception finding Wine",e);
+		}
+	}
+	
+/*		Wine wine = new Wine(Integer.parseInt(id));
+		wine.setCost(100.00f);
+		wine.setPrice(110.00f);
+		wine.setName("Le Bongo-Incredible 2");
+		wine.setVintner("Apache");
+		wine.setVintageYear(new Integer(LocalDate.now().getYear()).toString());
+		wine.setCategory("Red");
+		return wine; */
+	}
+	
+	
+

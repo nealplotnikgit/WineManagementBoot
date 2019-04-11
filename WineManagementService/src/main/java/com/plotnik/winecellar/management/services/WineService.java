@@ -18,12 +18,24 @@ public class WineService {
 	}
 	
 	public Wine getWineDetail(String id) throws WineDataException {
-		Wine wine = wineDao.getWineDetail(id);
+		long ID;
+		try {
+			ID = Long.parseLong(id);
+		} catch (NumberFormatException n) {
+			throw new WineDataException("Invalid id");
+		}
+		Wine wine = wineDao.getWineDetail(ID);
 		return wine;
 	}
 
 	public ArrayList<Wine> getWineList(SearchCriteria searchCriteria) throws WineDataException {
-		ArrayList<Wine> wineList = wineDao.getWineList(searchCriteria);
-		return wineList;
+		try {
+			ArrayList<Wine> wineList = wineDao.getWineList(Long.parseLong(searchCriteria.getId()),
+					searchCriteria.getCategory(), searchCriteria.getName(), searchCriteria.getYear());
+			return wineList;
+		} catch (NumberFormatException n) {
+			throw new WineDataException("Invalid id");
+		}
+		
 	}
 }
