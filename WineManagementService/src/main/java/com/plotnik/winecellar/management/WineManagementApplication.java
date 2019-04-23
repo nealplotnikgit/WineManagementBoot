@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Scope;
 
 @SpringBootApplication
 public class WineManagementApplication {
-
+// driver class
 	@Bean
 	@Scope("prototype")
 	Logger logger(InjectionPoint injectionPoint){
