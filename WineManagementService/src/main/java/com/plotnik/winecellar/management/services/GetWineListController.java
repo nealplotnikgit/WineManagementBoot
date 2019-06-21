@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.plotnik.winecellar.management.model.Wine;
 @RestController
-@CrossOrigin(origins =  "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 
 //@Path("/search")
 public class GetWineListController {
