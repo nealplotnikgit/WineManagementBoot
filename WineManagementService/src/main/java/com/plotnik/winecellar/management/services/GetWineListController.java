@@ -44,6 +44,9 @@ public class GetWineListController {
 		if ((id == null) && (name == null) && (year == null) && (category == null)) {
         	throw new WineException("The search criteria is invalid");
         }
+		if (name == null) {
+        	throw new WineException("Name is required");
+        }
         SearchCriteria searchCriteria = new SearchCriteria();
         ArrayList<Wine> result = null;
         searchCriteria.setId(id);
