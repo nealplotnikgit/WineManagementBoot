@@ -27,9 +27,12 @@ public WineDaoImpl(NamedParameterJdbcTemplate template) {
 	 * @see com.plotnik.winecellar.management.services.WineDao#getWineList(com.plotnik.winecellar.management.services.SearchCriteria)
 	 */
 	@Override
-	public ArrayList<Wine> getWineList(long upc, String category, String name, String year) throws WineDataException {
+	public ArrayList<Wine> getWineList(Long id, String year, String name, String category) throws WineDataException {
 		//TODO need to fix to handle other criteria
-		String query = "select upc, varietal, vintner, category,size from prod.wine_master where upc = " + upc;
+		String query;
+		 
+			query = "select upc, varietal, vintner, category,size from prod.wine_master where varietal LIKE '%" + name + "%'"; //TODO add prepared statement
+			System.out.println(query);//TODO add in search by other criteria  //TODO make case insenstive
 		try { 
 			  List<Wine> l = template.query(query,new WineRowMapper());
 			  if (l.size() == 0) {

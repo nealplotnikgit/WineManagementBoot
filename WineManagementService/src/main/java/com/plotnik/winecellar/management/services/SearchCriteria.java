@@ -4,18 +4,13 @@ import java.time.Year;
 
 public class SearchCriteria {
 	
-   private String id = null;
+   
    private String name = null;
    private String year = null;
    private String category = null;
+   private String id = null;
 
-   public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getName() {
+   public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -32,6 +27,12 @@ public class SearchCriteria {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	   public String getId() {
+			return id;
+		}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }
