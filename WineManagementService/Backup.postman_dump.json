@@ -27,8 +27,11 @@
 					"folder": null,
 					"order": [
 						"ea16dc84-c300-4737-80ae-a0704a09940f",
+						"baf4f75e-b212-41c5-914a-4d4bc9d6719d",
 						"9d39a237-09e6-46a0-8db6-fe92f59ec34e",
-						"e559b9da-7262-41f1-a149-8a8f9e0ccc8b"
+						"11ca2e45-2a4e-4004-bbba-5621da226b71",
+						"e559b9da-7262-41f1-a149-8a8f9e0ccc8b",
+						"72a4dd41-efe2-4c96-9857-31491197238e"
 					],
 					"folders_order": [],
 					"protocolProfileBehavior": {},
@@ -37,6 +40,64 @@
 				}
 			],
 			"requests": [
+				{
+					"id": "11ca2e45-2a4e-4004-bbba-5621da226b71",
+					"name": "Add Wine PCF",
+					"url": "http://winemanagementservice.cfapps.io/wines",
+					"description": "Add Wine ",
+					"data": [],
+					"dataOptions": null,
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"enabled": true
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0e7b8660-faf0-4fa9-b3fc-86d1dca318eb",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "5a66ebca-2295-471c-a756-5520354c8193",
+					"rawModeData": "{\"upc\":44956001186,\"price\":20.0,\"cost\":10.0,\"vintage_year\":2018,\"vintner\":\"ZDWines\",\"category\":\"Red\",\"name\":\"Pinot Noir Classic\"}",
+					"headers": "Content-Type: application/json\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "72a4dd41-efe2-4c96-9857-31491197238e",
+					"name": "delete wine PCF",
+					"url": "http://winemanagementservice.cfapps.io/wines/1",
+					"description": "Add Wine ",
+					"data": [],
+					"dataOptions": null,
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"description": "",
+							"enabled": true,
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"method": "DELETE",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0e7b8660-faf0-4fa9-b3fc-86d1dca318eb",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "5a66ebca-2295-471c-a756-5520354c8193",
+					"rawModeData": "",
+					"headers": "Content-Type: application/json\n",
+					"pathVariables": {}
+				},
 				{
 					"id": "74355049-5e72-42d0-b4f7-032dfa142fb0",
 					"name": "wineorderpost",
@@ -85,6 +146,27 @@
 					"collectionId": "5a66ebca-2295-471c-a756-5520354c8193",
 					"rawModeData": "{\"upc\":44956001186,\"price\":20.0,\"cost\":10.0,\"vintage_year\":2018,\"vintner\":\"ZDWines\",\"category\":\"Red\",\"name\":\"Pinot Noir Classic\"}",
 					"headers": "Content-Type: application/json\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "baf4f75e-b212-41c5-914a-4d4bc9d6719d",
+					"name": "Get Wines PCF",
+					"url": "http://winemanagementservice.cfapps.io/wines",
+					"description": "Add Wine ",
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0e7b8660-faf0-4fa9-b3fc-86d1dca318eb",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "5a66ebca-2295-471c-a756-5520354c8193",
+					"headers": "",
 					"pathVariables": {}
 				},
 				{
@@ -3989,7 +4071,7 @@
 	],
 	"environments": [
 		{
-			"id": "44e177fd-15e6-4870-9265-c87d1f4c7d69",
+			"id": "26be3f00-4a87-44f5-9309-a34fabb042b0",
 			"name": "My Workspace - globals",
 			"values": []
 		}

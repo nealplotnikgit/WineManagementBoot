@@ -1,0 +1,8 @@
+---
+applications:
+  - name: wineManagementService
+    buildpacks: 
+    - java_buildpack
+    path: target/WineManagementService-0.0.1-SNAPSHOT.jar
+    services:
+      - wine
