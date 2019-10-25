@@ -6,3 +6,4 @@ applications:
     path: target/WineManagementService-0.0.1-SNAPSHOT.jar
     services:
       - wine
+    memory: 1024M
