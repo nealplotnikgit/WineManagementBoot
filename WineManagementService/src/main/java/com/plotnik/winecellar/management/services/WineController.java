@@ -33,4 +33,8 @@ public class WineController {
     public void delete(@PathVariable(required = true) long id) {
         service.delete(id);
     }
+    @GetMapping("/name/{name}")
+    public List<Wine> getByName(@PathVariable(required = true) String name) throws WineNotFoundException {
+        return service.findWineByName(name);
+    }
 }

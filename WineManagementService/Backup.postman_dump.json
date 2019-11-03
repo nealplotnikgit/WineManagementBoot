@@ -27,6 +27,7 @@
 					"folder": null,
 					"order": [
 						"ea16dc84-c300-4737-80ae-a0704a09940f",
+						"aaed6966-fb7a-4293-a961-1fc28fc396a1",
 						"baf4f75e-b212-41c5-914a-4d4bc9d6719d",
 						"9d39a237-09e6-46a0-8db6-fe92f59ec34e",
 						"11ca2e45-2a4e-4004-bbba-5621da226b71",
@@ -146,6 +147,27 @@
 					"collectionId": "5a66ebca-2295-471c-a756-5520354c8193",
 					"rawModeData": "{\"upc\":44956001186,\"price\":20.0,\"cost\":10.0,\"vintage_year\":2018,\"vintner\":\"ZDWines\",\"category\":\"Red\",\"name\":\"Pinot Noir Classic\"}",
 					"headers": "Content-Type: application/json\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "aaed6966-fb7a-4293-a961-1fc28fc396a1",
+					"name": "Get Wines By Name",
+					"url": "http://localhost:8080/wines/name/Fume",
+					"description": "Add Wine ",
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0e7b8660-faf0-4fa9-b3fc-86d1dca318eb",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "5a66ebca-2295-471c-a756-5520354c8193",
+					"headers": "",
 					"pathVariables": {}
 				},
 				{
@@ -4071,7 +4093,7 @@
 	],
 	"environments": [
 		{
-			"id": "26be3f00-4a87-44f5-9309-a34fabb042b0",
+			"id": "bc266906-4dd8-4e53-9bd0-b3a9e7e28d2e",
 			"name": "My Workspace - globals",
 			"values": []
 		}

@@ -43,4 +43,11 @@ public class WineServiceJPA {
         entity.setVintner(wine.getVintner());
         return entity;
     }
+	public List<Wine> getWineByName(String name) throws WineNotFoundException {
+		return (List<Wine>) repository.findByNameOrderByName(name);
+	}
+	public List<Wine> findWineByName(String name) throws WineNotFoundException {
+		return (List<Wine>) repository.findByNameContainingIgnoreCaseOrderByNameAsc(name);
+	}
+	
 }
