@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class WineManagementApplication {
@@ -22,5 +24,15 @@ public class WineManagementApplication {
 		SpringApplication.run(WineManagementApplication.class, args);
 		//add comment
 	}
+	
+	public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/search").allowedOrigins("*");
+                registry.addMapping("/wines").allowedOrigins("*");
+            }
+        };
+    }
 
 }
