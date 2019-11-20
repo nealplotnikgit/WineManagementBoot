@@ -20,17 +20,19 @@ public class WineManagementApplication {
 	    return LoggerFactory.getLogger(injectionPoint.getMethodParameter().getContainingClass());
 	}
 	
+	private static String qaOrigin = "https://wine-application.cfapps.io";
 	public static void main(String[] args) {
 		SpringApplication.run(WineManagementApplication.class, args);
 		//add comment
 	}
 	
 	public WebMvcConfigurer corsConfigurer() {
+		
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/search").allowedOrigins("*");
-                registry.addMapping("/wines").allowedOrigins("*");
+                registry.addMapping("/search").allowedOrigins(qaOrigin);
+                registry.addMapping("/wines").allowedOrigins(qaOrigin);
             }
         };
     }
