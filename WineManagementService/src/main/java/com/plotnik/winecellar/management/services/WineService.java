@@ -4,10 +4,14 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.plotnik.winecellar.management.model.Wine;
+
+
+
 @Service
 public class WineService {
 	private final WineDao wineDao;
@@ -16,6 +20,7 @@ public class WineService {
 	public WineService(WineDao wineDao) {
 		this.wineDao = wineDao;
 	}
+
 	
 	public Wine getWineDetail(String id) throws WineDataException {
 		long ID;
@@ -37,5 +42,6 @@ public class WineService {
 			throw new WineDataException("Invalid id");
 		}
 		
-	}
+	}	
+
 }

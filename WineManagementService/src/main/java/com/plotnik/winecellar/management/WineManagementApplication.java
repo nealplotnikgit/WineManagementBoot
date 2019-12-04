@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class WineManagementApplication {
@@ -18,9 +20,21 @@ public class WineManagementApplication {
 	    return LoggerFactory.getLogger(injectionPoint.getMethodParameter().getContainingClass());
 	}
 	
+	private static String qaOrigin = "https://wine-application.cfapps.io";
 	public static void main(String[] args) {
 		SpringApplication.run(WineManagementApplication.class, args);
 		//add comment
 	}
+	
+	public WebMvcConfigurer corsConfigurer() {
+		
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/search").allowedOrigins(qaOrigin);
+                registry.addMapping("/wines").allowedOrigins(qaOrigin);
+            }
+        };
+    }
 
 }
