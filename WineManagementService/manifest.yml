@@ -7,3 +7,5 @@ applications:
     services:
       - wine
     memory: 1024M
+ #   env:
+ #     SPRING_PROFILES_ACTIVE: qa
