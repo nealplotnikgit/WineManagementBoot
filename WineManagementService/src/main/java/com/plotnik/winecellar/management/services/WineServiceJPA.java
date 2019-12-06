@@ -16,8 +16,16 @@ import java.util.Optional;
 @Service
 public class WineServiceJPA {
 		
-	@Autowired WineRepository repository;
+	WineRepository repository;
 
+	WineProperties properties;
+	
+	@Autowired
+	WineServiceJPA(WineRepository wineRepository, WineProperties wineProperties){
+		repository = wineRepository;
+		properties = wineProperties; 
+		System.out.println("Running application:" + properties.getName());
+	}
 	
 	public void add(WineDTO wine) {
         repository.save(toEntity(wine));
